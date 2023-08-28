@@ -1,0 +1,1 @@
+Example. Assume A ⊆ A ∪ A . Assume A ⊆ A . Then A ⊆ A . Proof: Assume x is an X . Assume x ∈ A . As A ⊆ A , so x ∈ A . As A ⊆ A , so x ∈ A . Hence, we are done . QED.
