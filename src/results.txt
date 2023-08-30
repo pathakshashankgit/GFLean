@@ -1,0 +1,124 @@
+Example. Assume A ⊆ B . Assume B ⊆ D . Then A ⊆ C .
+Proof: Assume s is an X . Assume s ∈ A .
+As A ⊆ B , so s ∈ B .
+As B ⊆ C , so s ∈ C .
+Hence, we are done . QED.
+
+example ( ?1 : A ⊆ B ) ( ?9 : B ⊆ D ) : A ⊆ C :=
+begin
+    intro s ,
+    assume ?29 : s ∈ A ,
+    have ?36 : s ∈ B := sorry ,
+    have ?49 : s ∈ C := sorry ,
+    assumption ,
+end
+
+
+Example. Then A ⊆ A ∪ B .
+Proof: Assume s is an X . Assume s ∈ A .
+As s ∈ A , so s ∈ A or s ∈ B .
+As s ∈ A or s ∈ B , so s ∈ A ∪ B .
+Hence, we are done . QED. 
+
+example : A ⊆ A ∪ B := 
+begin
+    intro s ,
+    assume ?14 : s ∈ A ,
+    have ?21 : s ∈ A ∨ s ∈ B := sorry ,
+    have ?39 : s ∈ A ∪ B := sorry ,
+    assumption ,
+end
+
+
+Example. Then A ∩ B ⊆ A . 
+Proof: Assume s is an X . Assume s ∈ A ∩ B .
+As s ∈ A ∩ B , so s ∈ A and s ∈ B .
+As s ∈ A and s ∈ B , so s ∈ A .
+Hence, we are done . QED.
+
+example : A ∩ B ⊆ A :=
+begin
+    intro s ,
+    assume ?14 : s ∈ A ∩ B ,
+    have ?24 : s ∈ A ∧ s ∈ B := sorry ,
+    have ?45 : s ∈ A := sorry ,
+    assumption ,
+end
+
+Example. Assume A ⊆ B . Assume A ⊆ C . Then A ⊆ B ∩ C .
+Proof: Assume s is an X . Assume s ∈ A .
+As A ⊆ B , so s ∈ B .
+As A ⊆ C , so s ∈ C .
+As s ∈ B and s ∈ C , so s ∈ B ∩ C .
+Hence, we are done . QED.
+
+example ( ?1 : A ⊆ B ) ( ?9 : A ⊆ C ) : A ⊆ B ∩ C :=
+begin
+    intro s ,
+    assume ?32 : s ∈ A ,
+    have ?39 : s ∈ B := sorry ,
+    have ?52 : s ∈ C := sorry ,
+    have ?65 : s ∈ B ∩ C := sorry ,
+    assumption ,
+end
+
+
+Example. Assume B ⊆ A . Assume C ⊆ A . Then B ∪ C ⊆ A .
+Proof: Assume s is an X . Assume s ∈ B ∪ C .
+As s ∈ B ∪ C , so s ∈ B or s ∈ C .
+As B ⊆ A and C ⊆ A , so s ∈ B or s ∈ C implies s ∈ A .
+As s ∈ B or s ∈ C , so s ∈ A .
+Hence, we are done . QED.
+
+example ( ?1 : B ⊆ A ) ( ?9 : C ⊆ A ) : B ∪ C ⊆ A :=
+begin
+    intro s ,
+    assume ?32 : s ∈ B ∪ C ,
+    have ?42 : s ∈ B ∨ s ∈ C := sorry ,
+    have ?63 : s ∈ B ∨ s ∈ C → s ∈ A := sorry ,
+    have ?95 : s ∈ A := sorry ,
+    assumption ,
+end 
+(Ambiguous - 2 Parse Trees).
+
+
+Example. Assume A ⊆ B . Assume C ⊆ D . Then A ∪ C ⊆ B ∪ D .
+Proof: Assume s is an X . Assume s ∈ A ∪ C . 
+As s ∈ A ∪ C , so s ∈ A or s ∈ C .
+As A ⊆ B and C ⊆ D , so s ∈ A or s ∈ C implies s ∈ B or s ∈ D .
+As s ∈ A or s ∈ C , so s ∈ B or s ∈ D .
+As s ∈ B or s ∈ D , so s ∈ B ∪ D .
+Hence, we are done . QED.
+
+example ( ?1 : A ⊆ B ) ( ?9 : C ⊆ D ) : A ∪ C ⊆ B ∪ D :=
+begin
+    intro s ,
+    assume ?35 : s ∈ A ∪ C ,
+    have ?45 : s ∈ A ∨ s ∈ C := sorry ,
+    have ?66 : s ∈ A ∨ s ∈ C → s ∈ B ∨ s ∈ D := sorry ,
+    have ?104 : s ∈ B ∨ s ∈ D := sorry ,
+    have ?128 : s ∈ B ∪ D := sorry ,
+    assumption ,
+end
+(Ambiguous - 5 Parse Trees)
+
+
+Example. Assume A ⊆ B . Assume C ⊆ D . Then A ∩ C ⊆ B ∩ D .
+Proof: Assume s is an X . Assume s ∈ A ∩ C . 
+As s ∈ A ∩ C , so s ∈ A and s ∈ C .
+As A ⊆ B and C ⊆ D , so s ∈ A and s ∈ C implies s ∈ B and s ∈ D .
+As s ∈ A and s ∈ C , so s ∈ B and s ∈ D .
+As s ∈ B and s ∈ D , so s ∈ B ∩ D .
+Hence, we are done . QED.
+
+example ( ?1 : A ⊆ B ) ( ?9 : C ⊆ D ) : A ∩ C ⊆ B ∩ D :=
+begin
+    intro s ,
+    assume ?35 : s ∈ A ∩ C ,
+    have ?45 : s ∈ A ∧ s ∈ C := sorry ,
+    have ?66 : s ∈ A ∧ s ∈ C → s ∈ B ∧ s ∈ D := sorry ,
+    have ?104 : s ∈ B ∧ s ∈ D := sorry ,
+    have ?128 : s ∈ B ∩ D := sorry ,
+    assumption ,
+end
+(Ambiguous - 5 Parse Trees)
