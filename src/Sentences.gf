@@ -13,9 +13,6 @@ abstract Sentences = {
         Pred ; -- atomic and complex predicates, they and type definitions together constitute statements
         TypeDefs ; -- for x : X
         
-
-        
-
     fun
         -- Ways of constructing Lean Types, like X or set X
         TypeVar_Types : TypeVar -> Types ;

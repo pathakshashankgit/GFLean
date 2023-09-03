@@ -1,15 +1,15 @@
-Example. Assume A ⊆ B . Assume B ⊆ D . Then A ⊆ C .
+Example. Assume A ⊆ B . Assume B ⊆ C . Then A ⊆ C .
 Proof: Assume s is an X . Assume s ∈ A .
 As A ⊆ B , so s ∈ B .
 As B ⊆ C , so s ∈ C .
 Hence, we are done . QED.
 
-example ( ?1 : A ⊆ B ) ( ?9 : B ⊆ D ) : A ⊆ C :=
+example ( h1 : A ⊆ B ) ( h9 : B ⊆ C ) : A ⊆ C :=
 begin
     intro s ,
-    assume ?29 : s ∈ A ,
-    have ?36 : s ∈ B := sorry ,
-    have ?49 : s ∈ C := sorry ,
+    assume h29 : s ∈ A ,
+    have h36 : s ∈ B := sorry ,
+    have h49 : s ∈ C := sorry ,
     assumption ,
 end
 
@@ -23,9 +23,9 @@ Hence, we are done . QED.
 example : A ⊆ A ∪ B := 
 begin
     intro s ,
-    assume ?14 : s ∈ A ,
-    have ?21 : s ∈ A ∨ s ∈ B := sorry ,
-    have ?39 : s ∈ A ∪ B := sorry ,
+    assume h14 : s ∈ A ,
+    have h21 : s ∈ A ∨ s ∈ B := sorry ,
+    have h39 : s ∈ A ∪ B := sorry ,
     assumption ,
 end
 
@@ -39,9 +39,9 @@ Hence, we are done . QED.
 example : A ∩ B ⊆ A :=
 begin
     intro s ,
-    assume ?14 : s ∈ A ∩ B ,
-    have ?24 : s ∈ A ∧ s ∈ B := sorry ,
-    have ?45 : s ∈ A := sorry ,
+    assume h14 : s ∈ A ∩ B ,
+    have h24 : s ∈ A ∧ s ∈ B := sorry ,
+    have h45 : s ∈ A := sorry ,
     assumption ,
 end
 
@@ -52,13 +52,13 @@ As A ⊆ C , so s ∈ C .
 As s ∈ B and s ∈ C , so s ∈ B ∩ C .
 Hence, we are done . QED.
 
-example ( ?1 : A ⊆ B ) ( ?9 : A ⊆ C ) : A ⊆ B ∩ C :=
+example ( h1 : A ⊆ B ) ( h9 : A ⊆ C ) : A ⊆ B ∩ C :=
 begin
     intro s ,
-    assume ?32 : s ∈ A ,
-    have ?39 : s ∈ B := sorry ,
-    have ?52 : s ∈ C := sorry ,
-    have ?65 : s ∈ B ∩ C := sorry ,
+    assume h32 : s ∈ A ,
+    have h39 : s ∈ B := sorry ,
+    have h52 : s ∈ C := sorry ,
+    have h65 : s ∈ B ∩ C := sorry ,
     assumption ,
 end
 
@@ -70,13 +70,13 @@ As B ⊆ A and C ⊆ A , so s ∈ B or s ∈ C implies s ∈ A .
 As s ∈ B or s ∈ C , so s ∈ A .
 Hence, we are done . QED.
 
-example ( ?1 : B ⊆ A ) ( ?9 : C ⊆ A ) : B ∪ C ⊆ A :=
+example ( h1 : B ⊆ A ) ( h9 : C ⊆ A ) : B ∪ C ⊆ A :=
 begin
     intro s ,
-    assume ?32 : s ∈ B ∪ C ,
-    have ?42 : s ∈ B ∨ s ∈ C := sorry ,
-    have ?63 : s ∈ B ∨ s ∈ C → s ∈ A := sorry ,
-    have ?95 : s ∈ A := sorry ,
+    assume h32 : s ∈ B ∪ C ,
+    have h42 : s ∈ B ∨ s ∈ C := sorry ,
+    have h63 : s ∈ B ∨ s ∈ C → s ∈ A := sorry ,
+    have h95 : s ∈ A := sorry ,
     assumption ,
 end 
 (Ambiguous - 2 Parse Trees).
@@ -90,14 +90,14 @@ As s ∈ A or s ∈ C , so s ∈ B or s ∈ D .
 As s ∈ B or s ∈ D , so s ∈ B ∪ D .
 Hence, we are done . QED.
 
-example ( ?1 : A ⊆ B ) ( ?9 : C ⊆ D ) : A ∪ C ⊆ B ∪ D :=
+example ( h1 : A ⊆ B ) ( h9 : C ⊆ D ) : A ∪ C ⊆ B ∪ D :=
 begin
     intro s ,
-    assume ?35 : s ∈ A ∪ C ,
-    have ?45 : s ∈ A ∨ s ∈ C := sorry ,
-    have ?66 : s ∈ A ∨ s ∈ C → s ∈ B ∨ s ∈ D := sorry ,
-    have ?104 : s ∈ B ∨ s ∈ D := sorry ,
-    have ?128 : s ∈ B ∪ D := sorry ,
+    assume h35 : s ∈ A ∪ C ,
+    have h45 : s ∈ A ∨ s ∈ C := sorry ,
+    have h66 : s ∈ A ∨ s ∈ C → s ∈ B ∨ s ∈ D := sorry ,
+    have h104 : s ∈ B ∨ s ∈ D := sorry ,
+    have h128 : s ∈ B ∪ D := sorry ,
     assumption ,
 end
 (Ambiguous - 5 Parse Trees)
@@ -111,14 +111,14 @@ As s ∈ A and s ∈ C , so s ∈ B and s ∈ D .
 As s ∈ B and s ∈ D , so s ∈ B ∩ D .
 Hence, we are done . QED.
 
-example ( ?1 : A ⊆ B ) ( ?9 : C ⊆ D ) : A ∩ C ⊆ B ∩ D :=
+example ( h1 : A ⊆ B ) ( h9 : C ⊆ D ) : A ∩ C ⊆ B ∩ D :=
 begin
     intro s ,
-    assume ?35 : s ∈ A ∩ C ,
-    have ?45 : s ∈ A ∧ s ∈ C := sorry ,
-    have ?66 : s ∈ A ∧ s ∈ C → s ∈ B ∧ s ∈ D := sorry ,
-    have ?104 : s ∈ B ∧ s ∈ D := sorry ,
-    have ?128 : s ∈ B ∩ D := sorry ,
+    assume h35 : s ∈ A ∩ C ,
+    have h45 : s ∈ A ∧ s ∈ C := sorry ,
+    have h66 : s ∈ A ∧ s ∈ C → s ∈ B ∧ s ∈ D := sorry ,
+    have h104 : s ∈ B ∧ s ∈ D := sorry ,
+    have h128 : s ∈ B ∩ D := sorry ,
     assumption ,
 end
 (Ambiguous - 5 Parse Trees)
