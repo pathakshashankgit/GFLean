@@ -59,6 +59,7 @@ concrete SentencesEng of Sentences = open Prelude, Basic, SyntaxEng, ParadigmsEn
         Or p1 p2 = ss (p1.s ++ "∨" ++ p2.s)
         | ss (p1.s ++ "or" ++ p2.s);
 
+
         Neg p1 = ss ("¬" ++ p1.s) 
         | ss ("it's not the case that" ++ p1.s);
 
